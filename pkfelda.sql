@@ -1,140 +1,83 @@
-/*
- Navicat Premium Data Transfer
+-- phpMyAdmin SQL Dump
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jun 17, 2021 at 06:01 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.10
 
- Source Server         : Localhost
- Source Server Type    : MySQL
- Source Server Version : 100408
- Source Host           : localhost:3306
- Source Schema         : pkfelda
-
- Target Server Type    : MySQL
- Target Server Version : 100408
- File Encoding         : 65001
-
- Date: 15/10/2020 19:30:43
-*/
-
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for isteri
--- ----------------------------
-DROP TABLE IF EXISTS `isteri`;
-CREATE TABLE `isteri`  (
-  `isteri_ic` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `isteri_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`isteri_ic`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of isteri
--- ----------------------------
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
 
--- ----------------------------
--- Table structure for kawin
--- ----------------------------
-DROP TABLE IF EXISTS `kawin`;
-CREATE TABLE `kawin`  (
-  `kawin_id` int NOT NULL AUTO_INCREMENT,
-  `peneroka_ic` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `isteri_ic` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`kawin_id`) USING BTREE,
-  INDEX `isteri_ic`(`isteri_ic`) USING BTREE,
-  INDEX `peneroka_ic`(`peneroka_ic`) USING BTREE,
-  CONSTRAINT `isteri_ic` FOREIGN KEY (`isteri_ic`) REFERENCES `isteri` (`isteri_ic`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `peneroka_ic` FOREIGN KEY (`peneroka_ic`) REFERENCES `peneroka` (`peneroka_ic`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
--- ----------------------------
--- Records of kawin
--- ----------------------------
+--
+-- Database: `pkfelda`
+--
 
+-- --------------------------------------------------------
 
--- ----------------------------
--- Table structure for kematian
--- ----------------------------
-DROP TABLE IF EXISTS `kematian`;
-CREATE TABLE `kematian`  (
-  `kematian_ic` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `sijil_kematian` longblob NULL,
-  `permit_penguburan` longblob NULL,
-  PRIMARY KEY (`kematian_ic`) USING BTREE,
-  CONSTRAINT `peneroka_ic23` FOREIGN KEY (`kematian_ic`) REFERENCES `peneroka` (`peneroka_ic`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+--
+-- Table structure for table `isteri`
+--
+-- Error reading structure for table pkfelda.isteri: #1932 - Table 'pkfelda.isteri' doesn't exist in engine
+-- Error reading data for table pkfelda.isteri: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `pkfelda`.`isteri`' at line 1
 
--- ----------------------------
--- Records of kematian
--- ----------------------------
+-- --------------------------------------------------------
 
+--
+-- Table structure for table `kawin`
+--
+-- Error reading structure for table pkfelda.kawin: #1932 - Table 'pkfelda.kawin' doesn't exist in engine
+-- Error reading data for table pkfelda.kawin: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `pkfelda`.`kawin`' at line 1
 
+-- --------------------------------------------------------
 
--- ----------------------------
--- Table structure for peneroka
--- ----------------------------
-DROP TABLE IF EXISTS `peneroka`;
-CREATE TABLE `peneroka`  (
-  `peneroka_ic` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `peneroka_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`peneroka_ic`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+--
+-- Table structure for table `kematian`
+--
+-- Error reading structure for table pkfelda.kematian: #1932 - Table 'pkfelda.kematian' doesn't exist in engine
+-- Error reading data for table pkfelda.kematian: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `pkfelda`.`kematian`' at line 1
 
--- ----------------------------
--- Records of peneroka
--- ----------------------------
+-- --------------------------------------------------------
 
+--
+-- Table structure for table `peneroka`
+--
+-- Error reading structure for table pkfelda.peneroka: #1932 - Table 'pkfelda.peneroka' doesn't exist in engine
+-- Error reading data for table pkfelda.peneroka: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `pkfelda`.`peneroka`' at line 1
 
--- ----------------------------
--- Table structure for users
--- ----------------------------
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users`  (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `created_at` timestamp(6) NULL DEFAULT current_timestamp(6),
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+-- --------------------------------------------------------
 
--- ----------------------------
--- Records of users
--- ----------------------------
-INSERT INTO `users` VALUES (1, 'shahmil', '$2y$10$LWCLAbRRGlWz/u5c7iq60u.k5eN5w78xh2tpnDKKxoZ.N.66BkHpe', '2020-10-06 15:46:34.754572');
+--
+-- Table structure for table `users`
+--
+-- Error reading structure for table pkfelda.users: #1932 - Table 'pkfelda.users' doesn't exist in engine
+-- Error reading data for table pkfelda.users: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `pkfelda`.`users`' at line 1
 
--- ----------------------------
--- Table structure for waris
--- ----------------------------
-DROP TABLE IF EXISTS `waris`;
-CREATE TABLE `waris`  (
-  `waris_ic` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `waris_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`waris_ic`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+-- --------------------------------------------------------
 
--- ----------------------------
--- Records of waris
--- ----------------------------
+--
+-- Table structure for table `waris`
+--
+-- Error reading structure for table pkfelda.waris: #1932 - Table 'pkfelda.waris' doesn't exist in engine
+-- Error reading data for table pkfelda.waris: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `pkfelda`.`waris`' at line 1
 
+-- --------------------------------------------------------
 
--- ----------------------------
--- Table structure for warisan
--- ----------------------------
-DROP TABLE IF EXISTS `warisan`;
-CREATE TABLE `warisan`  (
-  `warisan_id` int NOT NULL AUTO_INCREMENT,
-  `peneroka_ic` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `waris_ic` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`warisan_id`) USING BTREE,
-  INDEX `peneroka_icw`(`peneroka_ic`) USING BTREE,
-  INDEX `waris_icw`(`waris_ic`) USING BTREE,
-  CONSTRAINT `peneroka_icw` FOREIGN KEY (`peneroka_ic`) REFERENCES `peneroka` (`peneroka_ic`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `waris_icw` FOREIGN KEY (`waris_ic`) REFERENCES `waris` (`waris_ic`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+--
+-- Table structure for table `warisan`
+--
+-- Error reading structure for table pkfelda.warisan: #1932 - Table 'pkfelda.warisan' doesn't exist in engine
+-- Error reading data for table pkfelda.warisan: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `pkfelda`.`warisan`' at line 1
+COMMIT;
 
--- ----------------------------
--- Records of warisan
--- ----------------------------
-
-
-SET FOREIGN_KEY_CHECKS = 1;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
